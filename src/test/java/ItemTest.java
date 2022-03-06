@@ -1,7 +1,12 @@
-/*import BuildObjects.Hero;
+import BuildObjects.Hero;
+import EquipItem.EquipArmor;
+import EquipItem.EquipWeapon;
 import InvalidException.InvalidArmorException;
 import InvalidException.InvalidWeaponException;
 import Main.RPGCharacters;
+import Updates.DmgPerSecondNoWeapons;
+import Updates.UpdateStatsWithArmor;
+import Updates.UpdateStatsWithWeapon;
 import org.junit.jupiter.api.Test;
 import org.testng.AssertJUnit;
 
@@ -9,124 +14,116 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ItemTest {
-	
 
 	//---Equipping a high level weapon (lvl 2) for warrior (lvl 1)
-	
 	@Test
 	public void equipWeapon_LvlToHigh_InvalidWeaponExceptionWithProperMessage() {
 		//---arrange
-		RPGCharacters app = new RPGCharacters();
-		app.player = new Hero("Michel", "Warrior", 5, 2, 1);
-		app.MakeWeapons();
-		String choice = "Bronze axe";
+		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
+        EquipWeapon ew = new EquipWeapon();
+		String choice = "bronze axe";
 		String expected = "You dont have sufficient level to equip weapon!";
 		//---act
-		Exception exception = assertThrows(InvalidWeaponException.class, ()-> app.equipWeapon(choice));
+		Exception exception = assertThrows(InvalidWeaponException.class, ()-> ew.equipWeapon(player, choice));
 		String actual = exception.getMessage();
 		//---assert
 		assertEquals(expected,actual);
 	}
-	
+
 	//---Equipping a high level (lvl 2) armor for warrior (lvl 1)
 	@Test
 	public void equipArmor_LvlToHigh_InvalidArmorExceptionWithProperMessage() {
 		//---arrange
-		RPGCharacters app = new RPGCharacters();
-		app.player = new Hero("Michel", "Warrior", 5, 2, 1);
-		app.MakeArmor();
-		String choice = "Steel plate";
-		String slot = "Body";
+		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
+        EquipArmor ea = new EquipArmor();
+		String choice = "steel plate";
+		String slot = "body";
 		String expected = "You dont have sufficient level to equip armor!";
 		//---act
-		Exception exception = assertThrows(InvalidArmorException.class, ()-> app.equipArmor(choice, slot));
+		Exception exception = assertThrows(InvalidArmorException.class, ()-> ea.equipArmor(player, choice, slot));
 		String actual = exception.getMessage();
 		//---assert
 		assertEquals(expected,actual);
 	}
-	
+
 	//---Equipping wrong weapon type, Warrior trying to equip bow
 	@Test
 	public void equipWeapon_WrongType_InvalidWeaponExceptionWithProperMessage() {
 		//---arrange
-		RPGCharacters app = new RPGCharacters();
-		app.player = new Hero("Michel", "Warrior", 5, 2, 1);
-		app.MakeWeapons();
-		String choice = "Wooden bow";
+		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
+        EquipWeapon ew = new EquipWeapon();
+		String choice = "wooden bow";
 		String expected = "This weapon is not available to your class!";
 		//---act
-		Exception exception = assertThrows(InvalidWeaponException.class, ()-> app.equipWeapon(choice));
+		Exception exception = assertThrows(InvalidWeaponException.class, ()-> ew.equipWeapon(player, choice));
 		String actual = exception.getMessage();
 		//---assert
 		assertEquals(expected,actual);
 	}
-	
+
 	//---Equipping wrong armor type, Warrior trying to equip cloth armor
 	@Test
 	public void equipArmor_WrongType_InvalidArmorExceptionWithProperMessage() {
 		//---arrange
-		RPGCharacters app = new RPGCharacters();
-		app.player = new Hero("Michel", "Warrior", 5, 2, 1);
-		app.MakeArmor();
-		String choice = "Cloth";
-		String slot = "Body";
+		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
+		EquipArmor ea = new EquipArmor();
+		String choice = "cloth";
+		String slot = "body";
 		String expected = "This armor is not available to your class!";
 		//---act
-		Exception exception = assertThrows(InvalidArmorException.class, ()-> app.equipArmor(choice, slot));
+		Exception exception = assertThrows(InvalidArmorException.class, ()-> ea.equipArmor(player, choice, slot));
 		String actual = exception.getMessage();
 		//---assert
 		assertEquals(expected,actual);
 	}
-		
+
 	//---Equipping a correct weapon
 	@Test
 	public void equipWeapon_rightType_BooleanTrueReturned() throws InvalidWeaponException {
 		//---arrange
-		RPGCharacters app = new RPGCharacters();
-		app.player = new Hero("Michel", "Warrior", 5, 2, 1);
-		app.MakeWeapons();
-		String choice = "Wooden sword";
+		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
+        EquipWeapon ew = new EquipWeapon();
+		String choice = "wooden sword";
 		Boolean expected = true;
 		//---act
-		Boolean actual = app.equipWeapon(choice);
+		Boolean actual = ew.equipWeapon(player, choice);
 		//---assert
 		AssertJUnit.assertEquals(expected,actual);
 	}
-		
+
 	//---Equipping right armor type
 	@Test
 	public void equipArmor_rightType_BooleanTrueReturned() throws InvalidArmorException {
 		//---arrange
-		RPGCharacters app = new RPGCharacters();
-		app.player = new Hero("Michel", "Warrior", 5, 2, 1);
-		app.MakeArmor();
-		String choice = "Bronze plate";
-		String slot = "Body";
+		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
+        EquipArmor ea = new EquipArmor();
+		String choice = "bronze plate";
+		String slot = "body";
 		boolean expected = true;
 		//---act
-		boolean actual = app.equipArmor(choice, slot);
+		boolean actual = ea.equipArmor(player, choice, slot);
 		//---assert
 		assertEquals(expected,actual);
 	}
-	
+
 	//---Attributes gained by armor
 	@Test
 	public void gainAttByArmor_equipArmor_TotalAttributesIncrease() throws InvalidArmorException{
 		//---arrange
-		RPGCharacters app = new RPGCharacters();
-		app.player = new Hero("Michel", "Warrior", 5, 2, 1);
-		app.MakeArmor();
-		String choice = "Bronze plate"; //---adds str. 3, dex. 1, int. 1
-		String slot = "Body";
-		app.equipArmor(choice, slot);
+		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
+        EquipArmor ea = new EquipArmor();
+        UpdateStatsWithArmor usa = new UpdateStatsWithArmor();
+		String choice = "bronze plate"; //---adds str. 3, dex. 1, int. 1
+		String slot = "body";
+		ea.equipArmor(player, choice, slot);
 		double expected_str = 8;
 		double expected_dex = 3;
 		double expected_int = 2;
 		//---act
-		app.updateStatsWithArmor();
-		double actual_str = app.player.getTotal_Strength();
-		double actual_dex = app.player.getTotal_Dexterity();
-		double actual_int = app.player.getTotal_Intelligence();
+		player = usa.updateStatsWithArmor(player);
+		double actual_str = player.getTotal_Strength();
+		double actual_dex = player.getTotal_Dexterity();
+		double actual_int = player.getTotal_Intelligence();
 		//---assert
 		AssertJUnit.assertEquals(expected_str,actual_str);
 		AssertJUnit.assertEquals(expected_dex,actual_dex);
@@ -137,53 +134,55 @@ public class ItemTest {
 	@Test
 	public void damagePerSecond_NoWeapons_damagePerSecondNoWeaponsReturned() {
 		//---arrange
-		RPGCharacters app = new RPGCharacters();
-		app.player = new Hero("Michel", "Warrior", 5, 2, 1);
+		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
+		DmgPerSecondNoWeapons  dmgpsNoWeapons = new DmgPerSecondNoWeapons();
 		int expected = 1*(1 + (5 / 100));
 		//---act
-		app.damagePerSecondNoWeapon();
-		int actual = (int) app.player.getDPS();
+		player = dmgpsNoWeapons.damagePerSecondNoWeapon(player);
+		int actual = (int) player.getDPS();
 		//---assert
 		AssertJUnit.assertEquals(expected,actual);
 	}
-		
+
 	//---Calculate DSP with valid weapon equipped
 	@Test
 	public void damagePerSecond_withWeapon_damagePerSecondWithWeaponReturned() throws InvalidWeaponException {
 		//---arrange
-		RPGCharacters app = new RPGCharacters();
-		app.MakeWeapons();
-		app.player = new Hero("Michel", "Warrior", 5, 2, 1);
-		String choice = "Wooden sword";
-		app.equipWeapon(choice);
+		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
+		EquipWeapon ew = new EquipWeapon();
+		UpdateStatsWithWeapon usw = new UpdateStatsWithWeapon();
+		String choice = "wooden sword";
+		ew.equipWeapon(player, choice);
 		int expected = (int) ((2.5*1.5)*(1 + (5 / 100)));
 		//---act
-		app.updateStatsWithWeapon();
-		int actual = (int) app.player.getDPS();
+		player = usw.updateStatsWithWeapon(player);
+		int actual = (int) player.getDPS();
 		//---assert
 		AssertJUnit.assertEquals(expected,actual);
 	}
-	
-		
+
 	//---Calculate DSP with valid weapon and armor equipped
 	@Test
 	public void damagePerSecond_withWeaponAndArmor_damagePerSecondWithWeaponAndArmorReturned() throws InvalidWeaponException, InvalidArmorException {
 		//---arrange
-		RPGCharacters app = new RPGCharacters();
-		app.MakeWeapons();
-		app.MakeArmor();
-		app.player = new Hero("Michel", "Warrior", 5, 2, 1);
-		String choiceWeapon = "Wooden sword"; //---damage:2.5, attacks_per_second:1.5
-		String choiceArmor = "Bronze plate"; //---3 strength added
-		app.equipArmor(choiceArmor, "Body");
-		app.updateStatsWithArmor();
-		app.equipWeapon(choiceWeapon);
-		app.updateStatsWithWeapon();
+		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
+		EquipArmor ea = new EquipArmor();
+		EquipWeapon ew = new EquipWeapon();
+		UpdateStatsWithArmor usa = new UpdateStatsWithArmor();
+		UpdateStatsWithWeapon usw = new UpdateStatsWithWeapon();
+		String choiceWeapon = "wooden sword"; //---damage:2.5, attacks_per_second:1.5
+		String choiceArmor = "bronze plate"; //---3 strength added
+
+		ea.equipArmor(player, choiceArmor, "body");
+		player = usa.updateStatsWithArmor(player);
+		ew.equipWeapon(player, choiceWeapon);
+		player = usw.updateStatsWithWeapon(player);
+
 		int expected = (int) ((2.5*1.5)*(1.0+((5.0+3.0)/100.0)));
 		//---act
-		int actual = (int) app.player.getDPS();
+		int actual = (int) player.getDPS();
 		//---assert
 		AssertJUnit.assertEquals(expected,actual);
 	}
 		
-}*/
+}

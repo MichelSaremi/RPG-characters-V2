@@ -11,7 +11,7 @@ import EquipItem.EquipArmor;
 import EquipItem.EquipWeapon;
 import InvalidException.InvalidArmorException;
 import InvalidException.InvalidWeaponException;
-import Updates.DmgPerSecond;
+import Updates.DmgPerSecondNoWeapons;
 import Updates.HeroLevelUp;
 import Updates.UpdateStatsWithArmor;
 import Updates.UpdateStatsWithWeapon;
@@ -34,7 +34,7 @@ public class RPGCharacters {
 	DisplayArmor da = new DisplayArmor();
 	EquipArmor ea = new EquipArmor();
 	UpdateStatsWithArmor usa = new UpdateStatsWithArmor();
-	DmgPerSecond dps = new DmgPerSecond();
+	DmgPerSecondNoWeapons dps = new DmgPerSecondNoWeapons();
 	UpdateStatsWithWeapon usw = new UpdateStatsWithWeapon();
 	DisplayStats ds = new DisplayStats();
 
@@ -76,6 +76,7 @@ public class RPGCharacters {
 				if (choice[0].trim().toLowerCase().equals("level up")) {
 					player = lu.levelUp(player);
 					player = usa.updateStatsWithArmor(player);
+					System.out.println("Hero leveled up!");
 				}
 
 				//---Display available weapons

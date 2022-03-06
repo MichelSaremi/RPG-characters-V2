@@ -2,7 +2,7 @@ package Updates;
 
 import BuildObjects.Hero;
 
-public class DmgPerSecond {
+public class DmgPerSecondNoWeapons {
 
     //---calculate damage per second, when no weapon is equipped
     public Hero damagePerSecondNoWeapon(Hero player) {

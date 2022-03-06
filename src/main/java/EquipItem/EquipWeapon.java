@@ -7,9 +7,7 @@ import InvalidException.InvalidWeaponException;
 
 public class EquipWeapon {
 
-
     MakeWeapons mw = new MakeWeapons();
-
 
     //---equip level if player class is valid and player level is valid
     public boolean equipWeapon(Hero player, String choice) throws InvalidWeaponException {
