@@ -1,5 +1,7 @@
+/*import BuildObjects.Hero;
 import InvalidException.InvalidArmorException;
 import InvalidException.InvalidWeaponException;
+import Main.RPGCharacters;
 import org.junit.jupiter.api.Test;
 import org.testng.AssertJUnit;
 
@@ -184,4 +186,4 @@ public class ItemTest {
 		AssertJUnit.assertEquals(expected,actual);
 	}
 		
-}
+}*/

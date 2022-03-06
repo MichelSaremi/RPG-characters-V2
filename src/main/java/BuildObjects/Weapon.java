@@ -1,3 +1,4 @@
+package BuildObjects;
 
 public class Weapon extends Item {
 	

@@ -1,3 +1,5 @@
+package BuildObjects;
+
 import java.util.HashMap;
 
 public class Hero {
@@ -22,7 +24,7 @@ public class Hero {
 	
 	
 	//---equipment
-	HashMap<String,Item> equipment = new HashMap<>();
+	HashMap<String, Item> equipment = new HashMap<>();
 	
 	//---constructor
 	public Hero(String name, String character, int base_Strength, int base_Dexterity, int base_Intelligence) {
@@ -38,6 +40,7 @@ public class Hero {
 		this.total_Intelligence = base_Intelligence;
 		
 	}
+
 	//---setters
 	public void setBaseAtt(float base_Strength, float base_Dexterity, float base_Intelligence) {
 		this.base_Strength = base_Strength;
@@ -59,7 +62,7 @@ public class Hero {
 	}
 	
 	public void setWeapon(Weapon weapon) {
-		equipment.put("Weapon", weapon);
+		equipment.put("weapon", weapon);
 	}
 	
 	public void setArmor(Armor armor, String slot) {
@@ -99,7 +102,7 @@ public class Hero {
 		return damage_per_second;
 	}
 	public Weapon getWeapon() {
-		return (Weapon) equipment.get("Weapon");
+		return (Weapon) equipment.get("weapon");
 	}
 	public String getArmorName(String slot) {
 		return ((Armor) equipment.get(slot)).getName();
