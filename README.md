@@ -1,1 +1,1 @@
-# RPG-characters-v2
+# RPG-characters-V2
