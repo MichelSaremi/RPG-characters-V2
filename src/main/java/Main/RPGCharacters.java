@@ -24,7 +24,6 @@ public class RPGCharacters {
 
 	String[] choice;
 	public Hero player;
-	int charDPS;
 	public ArrayList<Weapon> weaponslist = new ArrayList<Weapon>();
 	public ArrayList<Armor> armorlist = new ArrayList<Armor>();
 	BuildHero bh = new BuildHero();

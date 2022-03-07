@@ -1,6 +1,6 @@
 # RPG-characters-V2
 
-This application was build as an assignment from Experis Academy.
+This application was built as an assignment from Experis Academy.
 
 In this Java based console application you can choose between four characters/heroes/classes. These are: Warrior, Rogue, Ranger and Mage. Each class can equip certain weapons and armor.
 
