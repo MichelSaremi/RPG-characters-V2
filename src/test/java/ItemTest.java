@@ -1,9 +1,8 @@
 import BuildObjects.Hero;
-import EquipItem.EquipArmor;
-import EquipItem.EquipWeapon;
-import InvalidException.InvalidArmorException;
-import InvalidException.InvalidWeaponException;
-import Main.RPGCharacters;
+import EquipItems.EquipArmor;
+import EquipItems.EquipWeapon;
+import InvalidExceptions.InvalidArmorException;
+import InvalidExceptions.InvalidWeaponException;
 import Updates.DmgPerSecondNoWeapons;
 import Updates.UpdateStatsWithArmor;
 import Updates.UpdateStatsWithWeapon;

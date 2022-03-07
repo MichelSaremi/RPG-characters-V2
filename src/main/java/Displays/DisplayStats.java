@@ -1,4 +1,4 @@
-package Display;
+package Displays;
 
 import BuildObjects.Hero;
 import java.text.DecimalFormat;

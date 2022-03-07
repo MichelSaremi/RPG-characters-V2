@@ -1,9 +1,9 @@
-package EquipItem;
+package EquipItems;
 
 import BuildObjects.Hero;
 import BuildObjects.MakeWeapons;
 import BuildObjects.Weapon;
-import InvalidException.InvalidWeaponException;
+import InvalidExceptions.InvalidWeaponException;
 
 public class EquipWeapon {
 

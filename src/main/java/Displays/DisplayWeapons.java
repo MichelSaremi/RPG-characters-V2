@@ -1,4 +1,4 @@
-package Display;
+package Displays;
 
 public class DisplayWeapons {
 

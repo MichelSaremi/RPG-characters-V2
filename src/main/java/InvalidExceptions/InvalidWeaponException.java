@@ -1,4 +1,4 @@
-package InvalidException;
+package InvalidExceptions;
 
 public class InvalidWeaponException extends Exception{
 	
