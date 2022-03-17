@@ -89,14 +89,13 @@ public class RPGCharacters {
 				//---Equip armor
 				//---armor can only be equipped at "Head", "Body" or "Legs"
 				//---Enter equip armor,armor name,slot
-
-				//---If input is incorrect
+				//---If input for equipping armor is incorrect prompt user
 				if (choice[0].trim().toLowerCase().equals("equip armor") && (choice.length!=3)) {
 					System.out.println("Please follow instructions in Readme for equipping armor!");
 
 				}else if (choice[0].trim().toLowerCase().equals("equip armor") && (choice.length==3)) {
 					try {
-						//---Attempt to equip armor
+						//---Otherwise attempt to equip armor
 						ea.equipArmor(player, choice[1].trim().toLowerCase(), choice[2].trim().toLowerCase());
 					} catch (InvalidArmorException e) {
 						e.printStackTrace();
