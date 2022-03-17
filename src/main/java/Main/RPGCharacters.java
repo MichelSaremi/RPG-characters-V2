@@ -9,7 +9,6 @@ import EquipItems.EquipArmor;
 import EquipItems.EquipWeapon;
 import InvalidExceptions.InvalidArmorException;
 import InvalidExceptions.InvalidWeaponException;
-import Updates.HeroLevelUp;
 import java.util.Scanner;
 
 public class RPGCharacters {
@@ -18,7 +17,6 @@ public class RPGCharacters {
 	String[] choice;
 	public Hero player;
 	BuildHero bh = new BuildHero();
-	HeroLevelUp lu = new HeroLevelUp();
 	DisplayWeapons dw = new DisplayWeapons();
 	EquipWeapon ew = new EquipWeapon();
 	DisplayArmor da = new DisplayArmor();
@@ -61,7 +59,7 @@ public class RPGCharacters {
 				//---Four different level up scenarios, one for each class
 				//---Enter -> level up
 				if (choice[0].trim().toLowerCase().equals("level up")) {
-					player = lu.levelUp(player);
+					player.levelUp();
 					System.out.println("Hero leveled up!");
 				}
 

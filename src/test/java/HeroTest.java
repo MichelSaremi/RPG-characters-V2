@@ -1,7 +1,5 @@
 import BuildObjects.BuildHero;
 import BuildObjects.Hero;
-import Main.RPGCharacters;
-import Updates.HeroLevelUp;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -31,13 +29,12 @@ public class HeroTest {
         //---arrange
         BuildHero bh = new BuildHero();
         Hero player = null;
-        HeroLevelUp hlu = new HeroLevelUp();
         String name = "Michel";
         String hero = "warrior";
         player = bh.buildHero(player, name, hero);
         int expected = 2;
         //---act
-        player = hlu.levelUp(player);
+        player.levelUp();
         int actual = player.getLevel();
         //---assert
         assertEquals(expected, actual);
@@ -140,7 +137,6 @@ public class HeroTest {
 			//---arrange
             BuildHero bh = new BuildHero();
             Hero player = null;
-            HeroLevelUp hlu = new HeroLevelUp();
 			String name = "Michel";
 			String hero = "warrior";
 			player = bh.buildHero(player, name, hero);
@@ -148,7 +144,7 @@ public class HeroTest {
 			double expected_dex = 4;
 			double expected_int = 2;
 			//---act
-			player = hlu.levelUp(player);
+			player.levelUp();
 			double actual_str = player.getBase_Strength();
 			double actual_dex = player.getBase_Dexterity();
 			double actual_int = player.getBase_Intelligence();
@@ -165,7 +161,6 @@ public class HeroTest {
 			//---arrange
             BuildHero bh = new BuildHero();
             Hero player = null;
-            HeroLevelUp hlu = new HeroLevelUp();
 			String name = "Michel";
 			String hero = "rogue";
 			player = bh.buildHero(player, name, hero);
@@ -173,7 +168,7 @@ public class HeroTest {
 			double expected_dex = 10;
 			double expected_int = 2;
 			//---act
-			player = hlu.levelUp(player);
+			player.levelUp();
 			double actual_str = player.getBase_Strength();
 			double actual_dex = player.getBase_Dexterity();
 			double actual_int = player.getBase_Intelligence();
@@ -189,7 +184,6 @@ public class HeroTest {
 			//---arrange
             BuildHero bh = new BuildHero();
             Hero player = null;
-            HeroLevelUp hlu = new HeroLevelUp();
 			String name = "Michel";
 			String hero = "ranger";
 			player = bh.buildHero(player, name, hero);
@@ -197,7 +191,7 @@ public class HeroTest {
 			double expected_dex = 12;
 			double expected_int = 2;
 			//---act
-			player = hlu.levelUp(player);
+			player.levelUp();
 			double actual_str = player.getBase_Strength();
 			double actual_dex = player.getBase_Dexterity();
 			double actual_int = player.getBase_Intelligence();
@@ -213,7 +207,6 @@ public class HeroTest {
 			//---arrange
             BuildHero bh = new BuildHero();
             Hero player = null;
-            HeroLevelUp hlu = new HeroLevelUp();
 			String name = "Michel";
 			String hero = "mage";
 			player = bh.buildHero(player, name, hero);
@@ -221,7 +214,7 @@ public class HeroTest {
 			double expected_dex = 2;
 			double expected_int = 13;
 			//---act
-			player = hlu.levelUp(player);
+			player.levelUp();
 			double actual_str = player.getBase_Strength();
 			double actual_dex = player.getBase_Dexterity();
 			double actual_int = player.getBase_Intelligence();

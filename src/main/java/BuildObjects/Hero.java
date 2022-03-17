@@ -35,6 +35,46 @@ public class Hero {
 
 	}
 
+	//---level up
+	public void levelUp() {
+
+		//---for warrior
+		if (this.character.equals("warrior")) {
+
+			this.level = this.level + 1;
+			this.base_Strength = this.base_Strength + 3;
+			this.base_Dexterity = this.base_Dexterity + 2;
+			this.base_Intelligence = this.base_Intelligence + 1;
+		}
+
+		//---for rogue
+		if (this.character.equals("rogue")) {
+
+			this.level = this.level + 1;
+			this.base_Strength = this.base_Strength + 1;
+			this.base_Dexterity = this.base_Dexterity + 4;
+			this.base_Intelligence = this.base_Intelligence + 1;
+		}
+		//---for ranger
+
+		if (this.character.equals("ranger")) {
+
+			this.level = this.level + 1;
+			this.base_Strength = this.base_Strength + 1;
+			this.base_Dexterity = this.base_Dexterity + 5;
+			this.base_Intelligence = this.base_Intelligence + 1;
+		}
+
+		//---for mage
+		if (this.character.equals("mage")) {
+
+			this.level = this.level + 1;
+			this.base_Strength = this.base_Strength + 1;
+			this.base_Dexterity = this.base_Dexterity + 1;
+			this.base_Intelligence = this.base_Intelligence + 5;
+		}
+	}
+
 	//---setters
 	public void setBaseAtt(float base_Strength, float base_Dexterity, float base_Intelligence) {
 		this.base_Strength = base_Strength;
