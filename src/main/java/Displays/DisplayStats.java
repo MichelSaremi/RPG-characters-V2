@@ -23,7 +23,7 @@ public class DisplayStats {
             stats.append("Strength :"+player.getTotalstrengthWithArmor()+"\n");
             stats.append("Dexterity :"+player.getTotalDexWithArmor()+"\n");
             stats.append("Intelligence :"+player.getTotalIntWithArmor()+"\n");
-            stats.append("Damage per second :"+df.format(player.getDPS())+"\n");
+            stats.append("Damage per second :"+df.format(player.getDmgPerSecond())+"\n");
             stats.append("----------------------- \n");
             System.out.println(stats);
 
@@ -39,7 +39,7 @@ public class DisplayStats {
             stats.append("Strength :"+player.getBase_Strength()+"\n");
             stats.append("Dexterity :"+player.getBase_Dexterity()+"\n");
             stats.append("Intelligence :"+player.getBase_Intelligence()+"\n");
-            stats.append("Damage per second :"+df.format(player.getDPS())+"\n");
+            stats.append("Damage per second :"+df.format(player.getDmgPerSecond())+"\n");
             stats.append("----------------------- \n");
             System.out.println(stats);
         }

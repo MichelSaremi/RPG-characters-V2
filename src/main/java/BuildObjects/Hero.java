@@ -13,11 +13,7 @@ public class Hero {
 	private float base_Strength;
 	private float base_Dexterity;
 	private float base_Intelligence;
-	
-	//private float total_Strength;
-	//private float total_Dexterity;
-	//private float total_Intelligence;
-	
+
 	
 	//---damage
 	private double damage_per_second;
@@ -42,10 +38,6 @@ public class Hero {
 		this.base_Dexterity = base_Dexterity;
 		this.base_Intelligence = base_Intelligence;
 
-		//---total attributes initially set to base value
-		//this.total_Strength = base_Strength;
-		//this.total_Dexterity = base_Dexterity;
-		//this.total_Intelligence = base_Intelligence;
 	}
 
 	//---setters
@@ -54,11 +46,7 @@ public class Hero {
 		this.base_Dexterity = base_Dexterity;
 		this.base_Intelligence = base_Intelligence;
 	}
-	//public void setTotalAtt(float total_Strength, float total_Dexterity, float total_Intelligence) {
-	//	this.total_Strength = total_Strength;
-	//	this.total_Dexterity = total_Dexterity;
-	//	this.total_Intelligence = total_Intelligence;
-	//}
+
 	
 	public void setLevel(int level) {
 		this.level= level;
@@ -101,15 +89,6 @@ public class Hero {
 	public float getBase_Intelligence() {
 		return base_Intelligence;
 	}
-	//public float getTotal_Strength() {
-	//	return total_Strength;
-	//}
-	//public float getTotal_Dexterity() {
-	//	return total_Dexterity;
-	//}
-	//public float getTotal_Intelligence() {
-	//	return total_Intelligence;
-	//}
 
 	public double getDPS() {
 		return damage_per_second;
@@ -204,6 +183,61 @@ public class Hero {
 		float total_int = base_int + head_int + body_int + legs_int;
 
 		return total_int;
+	}
+
+	public double getDmgPerSecond(){
+		double CharDPS = 0;
+
+		if(equipment.get(slotType.WEAPON)==null) {
+			if (this.character.equals("warrior")) {
+				CharDPS = 1 * (1 + (this.getTotalstrengthWithArmor() / 100));
+			} else if (this.character.equals("rogue")) {
+				CharDPS = 1 * (1 + (this.getTotalDexWithArmor() / 100));
+			} else if (this.character.equals("ranger")) {
+				CharDPS = 1 * (1 + (this.getTotalDexWithArmor() / 100));
+			} else if (this.character.equals("mage")) {
+				CharDPS = 1 * (1 + (this.getTotalIntWithArmor() / 100));
+			}
+		}else if(equipment.get(slotType.WEAPON)!=null){
+
+			double weaponAttackPerSec = ((Weapon) equipment.get(slotType.WEAPON)).getAttacks_per_second();
+			double weaponDmg = ((Weapon) equipment.get(slotType.WEAPON)).getDamage();
+			double weaponDmgPerSec = weaponDmg * weaponAttackPerSec;
+
+			//---update DPS when armor is contributing
+			if (equipment.get(slotType.HEAD)!=null||equipment.get(slotType.BODY)!=null ||equipment.get(slotType.LEGS)!=null) {
+
+				if (this.character.equals("warrior")) {
+					CharDPS = weaponDmgPerSec*(1+(this.getTotalstrengthWithArmor()/100));
+				}
+				else if (this.character.equals("rogue")) {
+					CharDPS = weaponDmgPerSec*(1+(this.getTotalDexWithArmor()/100));
+				}
+				else if (this.character.equals("ranger")) {
+					CharDPS = weaponDmgPerSec*(1+(this.getTotalDexWithArmor()/100));
+				}
+				else if (this.character.equals("mage")) {
+					CharDPS = weaponDmgPerSec*(1+(this.getTotalIntWithArmor()/100));
+				}
+
+				//---update DPS when NO armor is contributing
+			}else if (equipment.get(slotType.HEAD)==null && equipment.get(slotType.BODY)==null && equipment.get(slotType.LEGS)==null) {
+
+				if (this.character.equals("warrior")) {
+					CharDPS = weaponDmgPerSec*(1+(this.getBase_Strength()/100));
+				}
+				else if (this.character.equals("rogue")) {
+					CharDPS = weaponDmgPerSec*(1+(this.getBase_Dexterity()/100));
+				}
+				else if (this.character.equals("ranger")) {
+					CharDPS = weaponDmgPerSec*(1+(this.getBase_Dexterity()/100));
+				}
+				else if (this.character.equals("mage")) {
+					CharDPS = weaponDmgPerSec*(1+(this.getBase_Intelligence()/100));
+				}
+			}
+			}
+		return CharDPS;
 	}
 }	
 	

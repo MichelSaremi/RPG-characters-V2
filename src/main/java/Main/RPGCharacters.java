@@ -132,7 +132,7 @@ public class RPGCharacters {
 					//player = dps.damagePerSecondNoWeapon(player);
 					//---damage per second calculated if weapons are equipped
 				} else if (player.getWeapon() != null) {
-					player = usw.updateStatsWithWeapon(player);
+					//player = usw.updateStatsWithWeapon(player);
 				}
 
 				//---automatically display status at the end of each command
