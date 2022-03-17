@@ -104,14 +104,32 @@ public class RPGCharacters {
 				//---Equip armor
 				//---armor can only be equiped at "Head", "Body" or "Legs"
 				//---Enter equip armor,armor name,slot
-				if (choice[0].trim().toLowerCase().equals("equip armor") && (choice[2].trim().toLowerCase().equals("head") || choice[2].trim().toLowerCase().equals("body") || choice[2].trim().toLowerCase().equals("legs"))) {
+				//|| choice[2].trim().toLowerCase().equals("body") || choice[2].trim().toLowerCase().equals("legs"))) {
+				if (choice[0].trim().toLowerCase().equals("equip armor") && (choice[2].trim().toLowerCase().equals("head"))){
 					try {
-						//---armor is equiped
-						ea.equipArmor(player, choice[1].trim().toLowerCase(), choice[2].trim().toLowerCase());
+						//---armor is equipped
+						ea.equipArmorHead(player, choice[1].trim().toLowerCase());
 						System.out.println("Hero " + choice[2].trim().toLowerCase() + " equipped with " + player.getArmorName(choice[2].trim().toLowerCase()));
 					} catch (InvalidArmorException e) {
 						e.printStackTrace();
 					}
+				}else if (choice[0].trim().toLowerCase().equals("equip armor") && (choice[2].trim().toLowerCase().equals("body"))){
+					try {
+						//---armor is equipped
+						ea.equipArmorBody(player, choice[1].trim().toLowerCase());
+						System.out.println("Hero " + choice[2].trim().toLowerCase() + " equipped with " + player.getArmorName(choice[2].trim().toLowerCase()));
+					} catch (InvalidArmorException e) {
+						e.printStackTrace();
+					}
+				}else if (choice[0].trim().toLowerCase().equals("equip armor") && (choice[2].trim().toLowerCase().equals("legs"))){
+					try {
+						//---armor is equipped
+						ea.equipArmorLegs(player, choice[1].trim().toLowerCase());
+						System.out.println("Hero " + choice[2].trim().toLowerCase() + " equipped with " + player.getArmorName(choice[2].trim().toLowerCase()));
+					} catch (InvalidArmorException e) {
+						e.printStackTrace();
+					}
+
 					//---primary attributes are update by armor
 					player = usa.updateStatsWithArmor(player);
 

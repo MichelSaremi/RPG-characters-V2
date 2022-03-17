@@ -24,8 +24,16 @@ public class Hero {
 	
 	
 	//---equipment
-	HashMap<String, Item> equipment = new HashMap<>();
-	
+	 enum slotType{
+		HEAD,
+		BODY,
+		LEGS,
+		WEAPON,
+	}
+
+	HashMap<slotType, Item> equipment = new HashMap<>();
+
+
 	//---constructor
 	public Hero(String name, String character, int base_Strength, int base_Dexterity, int base_Intelligence) {
 		this.name = name;
@@ -38,7 +46,11 @@ public class Hero {
 		this.total_Strength = base_Strength;
 		this.total_Dexterity = base_Dexterity;
 		this.total_Intelligence = base_Intelligence;
-		
+
+//		public float getTotalstrength(){
+//			greate methods for above
+//		}
+
 	}
 
 	//---setters
@@ -62,11 +74,19 @@ public class Hero {
 	}
 	
 	public void setWeapon(Weapon weapon) {
-		equipment.put("weapon", weapon);
+		equipment.put(slotType.WEAPON, weapon);
 	}
 	
-	public void setArmor(Armor armor, String slot) {
-		equipment.put(slot, armor);
+	public void setArmorLegs(Armor armor) {
+		equipment.put(slotType.LEGS, armor);
+	}
+
+	public void setArmorBody(Armor armor) {
+		equipment.put(slotType.BODY, armor);
+	}
+
+	public void setArmorHead(Armor armor) {
+		equipment.put(slotType.HEAD, armor);
 	}
 	
 	//---getters

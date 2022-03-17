@@ -18,7 +18,7 @@ public class DisplayStats {
             stats.append("Hero stats \n");
             stats.append("---------- \n");
             stats.append("Name : "+player.getName().toUpperCase()+"\n");
-            stats.append("Type : "+player.getChar().toLowerCase()+"\n");
+            stats.append("Type : "+player.getChar().toUpperCase()+"\n");
             stats.append("Level : "+player.getLevel()+"\n");
             stats.append("Strength :"+player.getTotal_Strength()+"\n");
             stats.append("Dexterity :"+player.getTotal_Dexterity()+"\n");
