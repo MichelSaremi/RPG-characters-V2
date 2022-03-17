@@ -30,6 +30,7 @@ public class EquipWeapon {
                 }
             }
         }
+        System.out.println("Weapon not available!");
         return false;
 
     }
