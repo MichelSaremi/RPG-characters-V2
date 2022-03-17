@@ -11,7 +11,7 @@ public class EquipArmor {
 
     MakeArmor ma = new MakeArmor();
 
-    //---equip head armor if player class is valid and player level is valid
+    //---equip armor if player class is valid and player level is valid
     public boolean equipArmor(Hero player, String choice, String slot) throws InvalidArmorException {
         for (Armor item : ma.MakeArmor()) {
             if (item.getName().equals(choice)) {
@@ -41,13 +41,15 @@ public class EquipArmor {
                     System.out.println("Hero legs are equipped with " + player.getArmorLegs().getName());
                     return true;
 
+                    //---if slot is invalid prompt user
                 }else if (!slot.equals("head") && !slot.equals("body") && !slot.equals("legs")){
                     System.out.println("You can only equip armor on Head, Body or Legs !");
                     return false;
                 }
             }
         }
-        System.out.println("Armor not available!");
+        //---if user types wrong armor name, they are prompted
+        System.out.println("The armor you have typed is not available! Type 'display armor' to see what is available...");
         return false;
 }}
 

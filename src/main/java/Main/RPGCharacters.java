@@ -36,12 +36,12 @@ public class RPGCharacters {
 		while (true) {
 
 			//---Prompt user for input, and split the input at ",",
-			//---use the word at first index to initiate further functionality
+			//---uses the word at first index to initiate further functionality
 			//---Enter -> start,your_name,your_class
 			commandinput();
 
 
-			//---it user types exit then exit while loop
+			//---it user types exit then they exit the while loop
 			if (choice[0].trim().toLowerCase().equals("exit")) {
 				System.out.println("Thank you for playing, goodbye.");
 				break;
@@ -90,13 +90,13 @@ public class RPGCharacters {
 				//---armor can only be equipped at "Head", "Body" or "Legs"
 				//---Enter equip armor,armor name,slot
 
-				//---If input incorrect
-				if (choice[0].trim().toLowerCase().equals("equip armor") && (choice.length==2)) {
+				//---If input is incorrect
+				if (choice[0].trim().toLowerCase().equals("equip armor") && (choice.length!=3)) {
 					System.out.println("Please follow instructions in Readme for equipping armor!");
 
 				}else if (choice[0].trim().toLowerCase().equals("equip armor") && (choice.length==3)) {
 					try {
-						//---armor is equipped
+						//---Attempt to equip armor
 						ea.equipArmor(player, choice[1].trim().toLowerCase(), choice[2].trim().toLowerCase());
 					} catch (InvalidArmorException e) {
 						e.printStackTrace();
@@ -114,7 +114,7 @@ public class RPGCharacters {
 
 				//---if no hero is created prompt user
 			} else {
-				System.out.println("To start choose your class: Warrior, Rogue, Ranger or Mage");
+				System.out.println("To start, follow instructions in Readme and choose your class: Warrior, Rogue, Ranger or Mage");
 			}
 
 			//---return to ask for input

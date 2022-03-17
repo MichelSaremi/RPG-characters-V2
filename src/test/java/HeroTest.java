@@ -41,7 +41,7 @@ public class HeroTest {
     }
 
 
-	//---heros created with proper default values
+	//---heroes created with proper default values
 	//---for Warrior
 	@Test
 	public void newWarrior_startAtt_warriorAtt() {
@@ -130,7 +130,7 @@ public class HeroTest {
 		assertEquals(expected_int,actual_int);
 		}
 
-		//---heros attributes when level up 
+		//---heroes attributes when level up
 		//---for Warrior
 		@Test
 		public void lvlUpWarrior_LvlUpAtt_warriorLvlTwoAtt() {

@@ -9,7 +9,7 @@ public class EquipWeapon {
 
     MakeWeapons mw = new MakeWeapons();
 
-    //---equip level if player class is valid and player level is valid
+    //---equip weapon if player class is valid and player level is valid
     public boolean equipWeapon(Hero player, String choice) throws InvalidWeaponException {
 
         for(Weapon item : mw.MakeWeapons()) {
@@ -32,6 +32,7 @@ public class EquipWeapon {
                 }
             }
         }
-        System.out.println("Weapon is not available!");
+        //---prompt user if they type a wrong weapon name
+        System.out.println("The weapon you have typed is not available! Type 'display weapons' to see what is available...");
         return false;
 }}

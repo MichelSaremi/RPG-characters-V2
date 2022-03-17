@@ -76,23 +76,13 @@ public class Hero {
 	}
 
 	//---setters
-	public void setBaseAtt(float base_Strength, float base_Dexterity, float base_Intelligence) {
-		this.base_Strength = base_Strength;
-		this.base_Dexterity = base_Dexterity;
-		this.base_Intelligence = base_Intelligence;
-	}
-
-	
-	public void setLevel(int level) {
-		this.level= level;
-	}
-
-	
 	public void setWeapon(Weapon weapon) {
 		equipment.put(slotType.WEAPON, weapon);
 	}
 	
-	public void setArmorLegs(Armor armor) { equipment.put(slotType.LEGS, armor); }
+	public void setArmorLegs(Armor armor) {
+		equipment.put(slotType.LEGS, armor);
+	}
 
 	public void setArmorBody(Armor armor) {
 		equipment.put(slotType.BODY, armor);
@@ -137,7 +127,7 @@ public class Hero {
 	}
 
 	public float getTotalstrengthWithArmor() {
-		//---get base values
+		//---set base value
 		float base_str = this.base_Strength;
 
 		//---set initial armor attributes to zero
@@ -145,7 +135,7 @@ public class Hero {
 		int body_str = 0;
 		int legs_str = 0;
 
-		//---change initial atributes with armor attributes
+		//---change initial attributes with armor attributes
 		if (equipment.get(slotType.HEAD) != null) {
 			head_str = ((Armor) equipment.get(slotType.HEAD)).getStrength();
 		}
@@ -156,14 +146,14 @@ public class Hero {
 			legs_str = ((Armor) equipment.get(slotType.LEGS)).getStrength();
 		}
 
-		//---add all attributes together and set in hero
+		//---add all attributes together and return value
 		float total_str = base_str + head_str + body_str + legs_str;
 
 		return total_str;
 	}
 
 	public float getTotalDexWithArmor() {
-		//---get base values
+		//---set base value
 		float base_dex = this.base_Dexterity;
 
 		//---set initial armor attributes to zero
@@ -171,7 +161,7 @@ public class Hero {
 		int body_dex = 0;
 		int legs_dex = 0;
 
-		//---change initial atributes with armor attributes
+		//---change initial attributes with armor attributes
 		if (equipment.get(slotType.HEAD) != null) {
 			head_dex = ((Armor) equipment.get(slotType.HEAD)).getDexterity();
 		}
@@ -182,14 +172,14 @@ public class Hero {
 			legs_dex = ((Armor) equipment.get(slotType.LEGS)).getDexterity();
 		}
 
-		//---add all attributes together and set in hero
+		//---add all attributes together and return value
 		float total_dex = base_dex + head_dex + body_dex + legs_dex;
 
 		return total_dex;
 	}
 
 	public float getTotalIntWithArmor() {
-		//---get base values
+		//---set base value
 		float base_int = this.base_Intelligence;
 
 		//---set initial armor attributes to zero
@@ -197,7 +187,7 @@ public class Hero {
 		int body_int = 0;
 		int legs_int = 0;
 
-		//---change initial atributes with armor attributes
+		//---change initial attributes with armor attributes
 		if (equipment.get(slotType.HEAD) != null) {
 			head_int = ((Armor) equipment.get(slotType.HEAD)).getIntelligence();
 		}
@@ -208,7 +198,7 @@ public class Hero {
 			legs_int = ((Armor) equipment.get(slotType.LEGS)).getIntelligence();
 		}
 
-		//---add all attributes together and set in hero
+		//---add all attributes together and return value
 		float total_int = base_int + head_int + body_int + legs_int;
 
 		return total_int;
@@ -217,7 +207,7 @@ public class Hero {
 	public double getDmgPerSecond(){
 		double CharDPS = 0;
 
-		//---when no weapon is equipped
+		//---Get DPS when no weapon is equipped
 		if(equipment.get(slotType.WEAPON)==null) {
 			if (this.character.equals("warrior")) {
 				CharDPS = 1 * (1 + (this.getTotalstrengthWithArmor() / 100));
@@ -228,7 +218,7 @@ public class Hero {
 			} else if (this.character.equals("mage")) {
 				CharDPS = 1 * (1 + (this.getTotalIntWithArmor() / 100));
 			}
-			//---when weapon is equipped
+			//---Get DPS when weapon is equipped
 		}else if(equipment.get(slotType.WEAPON)!=null){
 
 			double weaponAttackPerSec = ((Weapon) equipment.get(slotType.WEAPON)).getAttacks_per_second();
