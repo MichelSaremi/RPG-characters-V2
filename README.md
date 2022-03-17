@@ -2,7 +2,9 @@
 
 This application was built as an assignment from Experis Academy.
 
-In this Java based console application you can choose between four characters/heroes/classes. These are: Warrior, Rogue, Ranger and Mage. Each class can equip certain weapons and armor.
+To run this Java based console application, simply clone the repo, open in intelliJ and run from the RPGCharacters class.
+
+In this application you can choose between four characters/heroes/classes. These are: Warrior, Rogue, Ranger and Mage. Each class can equip certain weapons and armor.
 
 Test classes have been made to do unit testing and perform full test coverage.
 (When running test class you might be prompted to accept the Gradle Terms of Service)
@@ -12,11 +14,11 @@ when starting the application you will be prompted for input.
 ---------------------------------------------
 To start using the application, type in:
 
-start,your_name,your_class
+start, your_name, your_class
 
 Example:
 
-start,Michel,warrior
+start, Michel, warrior
 
 ---------------------------------------------
 
@@ -34,11 +36,11 @@ display weapons
 
 You can equip weapons by typing:
 
-equip weapon,weapon name
+equip weapon, weapon name
 
 Example:
 
-equip weapon,wooden sword
+equip weapon, wooden sword
 
 ---------------------------------------------
 
@@ -50,13 +52,13 @@ display armor
 
 You can equip armor by typing:
 
-equip armor,armor name,slot
+equip armor, armor name, slot
 
 (slot can be either Head, Body or Legs)
 
 Example:
 
-equip armor,bronze plate,body
+equip armor, bronze plate, body
 
 ---------------------------------------------
 
@@ -66,7 +68,7 @@ status
 
 ---------------------------------------------
 
-Finally you can exit the application by typing:
+Finally, you can exit the application by typing:
 
 exit
 
