@@ -37,9 +37,13 @@ public class EquipArmor {
             }else if (slot.equals("legs")) {
                     player.setArmorLegs(item);
                     return true;
+
+                }else if (!slot.equals("head") && !slot.equals("body") && !slot.equals("legs")){
+                    System.out.println("You can only equip armor on Head, Body or Legs !");
                 }
             }
         }
+        System.out.println("Armor not available!");
         return false;
 }}
 

@@ -11,6 +11,7 @@ public class EquipWeapon {
 
     //---equip level if player class is valid and player level is valid
     public boolean equipWeapon(Hero player, String choice) throws InvalidWeaponException {
+
         for(Weapon item : mw.MakeWeapons()) {
             if (item.getName().equals(choice)) {
                 if (!item.getChar().get(0).equals(player.getChar()) && !item.getChar().get(1).equals(player.getChar())) {
@@ -26,12 +27,11 @@ public class EquipWeapon {
                 else {
                     //---otherwise equip weapon
                     player.setWeapon(item);
+                    System.out.println("Hero equipped with " + player.getWeapon().getName());
                     return true;
                 }
             }
         }
-        System.out.println("Weapon not available!");
+        System.out.println("Weapon is not available!");
         return false;
-
-    }
-}
+}}

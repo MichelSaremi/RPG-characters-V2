@@ -74,7 +74,6 @@ public class RPGCharacters {
 				if (choice[0].trim().toLowerCase().equals("equip weapon")) {
 					try {
 						ew.equipWeapon(player, choice[1].trim().toLowerCase());
-						System.out.println("Hero equipped with " + player.getWeapon().getName());
 					} catch (InvalidWeaponException e) {
 						e.printStackTrace();
 					}
@@ -105,9 +104,9 @@ public class RPGCharacters {
 					}
 
 
-					//---If correct slot name not typed, user is prompted
-				} else if (choice[0].trim().toLowerCase().equals("equip armor") && (!choice[2].trim().toLowerCase().equals("head") || !choice[2].trim().toLowerCase().equals("body") || !choice[2].trim().toLowerCase().equals("legs"))) {
-					System.out.println("You can only equip armor on Head, Body or Legs !");
+					//---If input incorrect
+				} else if (choice[0].trim().toLowerCase().equals("equip armor") && (choice[2]==null)) {
+					System.out.println("Please follow instructions in Readme for equipping armor!");
 				}
 
 
