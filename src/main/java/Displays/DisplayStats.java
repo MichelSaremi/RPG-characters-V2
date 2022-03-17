@@ -12,7 +12,7 @@ public class DisplayStats {
         df.setMaximumFractionDigits(2);
 
         //---display when armor is equipped
-        if (player.getArmor("head")!=null||player.getArmor("body")!=null || player.getArmor("legs")!=null) {
+        if (player.getArmorHead()!=null||player.getArmorBody()!=null || player.getArmorLegs()!=null) {
             StringBuilder stats = new StringBuilder();
             stats.append("----------------------- \n");
             stats.append("Hero stats \n");
@@ -20,15 +20,15 @@ public class DisplayStats {
             stats.append("Name : "+player.getName().toUpperCase()+"\n");
             stats.append("Type : "+player.getChar().toUpperCase()+"\n");
             stats.append("Level : "+player.getLevel()+"\n");
-            stats.append("Strength :"+player.getTotal_Strength()+"\n");
-            stats.append("Dexterity :"+player.getTotal_Dexterity()+"\n");
-            stats.append("Intelligence :"+player.getTotal_Intelligence()+"\n");
+            stats.append("Strength :"+player.getTotalstrengthWithArmor()+"\n");
+            stats.append("Dexterity :"+player.getTotalDexWithArmor()+"\n");
+            stats.append("Intelligence :"+player.getTotalIntWithArmor()+"\n");
             stats.append("Damage per second :"+df.format(player.getDPS())+"\n");
             stats.append("----------------------- \n");
             System.out.println(stats);
 
             //---display when NO armor is equipped
-        }else if (player.getArmor("head")==null && player.getArmor("body")==null && player.getArmor("legs")==null) {
+        }else if (player.getArmorHead()==null && player.getArmorBody()==null && player.getArmorLegs()==null) {
             StringBuilder stats = new StringBuilder();
             stats.append("----------------------- \n");
             stats.append("Hero stats \n");

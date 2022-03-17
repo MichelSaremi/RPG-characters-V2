@@ -74,7 +74,7 @@ public class RPGCharacters {
 				//---Enter -> level up
 				if (choice[0].trim().toLowerCase().equals("level up")) {
 					player = lu.levelUp(player);
-					player = usa.updateStatsWithArmor(player);
+					//player = usa.updateStatsWithArmor(player);
 					System.out.println("Hero leveled up!");
 				}
 
@@ -89,7 +89,7 @@ public class RPGCharacters {
 				if (choice[0].trim().toLowerCase().equals("equip weapon")) {
 					try {
 						ew.equipWeapon(player, choice[1].trim().toLowerCase());
-						System.out.println("Hero equiped with " + player.getWeapon().getName());
+						System.out.println("Hero equipped with " + player.getWeapon().getName());
 					} catch (InvalidWeaponException e) {
 						e.printStackTrace();
 					}
@@ -102,36 +102,25 @@ public class RPGCharacters {
 				}
 
 				//---Equip armor
-				//---armor can only be equiped at "Head", "Body" or "Legs"
+				//---armor can only be equipped at "Head", "Body" or "Legs"
 				//---Enter equip armor,armor name,slot
-				//|| choice[2].trim().toLowerCase().equals("body") || choice[2].trim().toLowerCase().equals("legs"))) {
-				if (choice[0].trim().toLowerCase().equals("equip armor") && (choice[2].trim().toLowerCase().equals("head"))){
+				if (choice[0].trim().toLowerCase().equals("equip armor")){
 					try {
 						//---armor is equipped
-						ea.equipArmorHead(player, choice[1].trim().toLowerCase());
-						System.out.println("Hero " + choice[2].trim().toLowerCase() + " equipped with " + player.getArmorName(choice[2].trim().toLowerCase()));
-					} catch (InvalidArmorException e) {
-						e.printStackTrace();
-					}
-				}else if (choice[0].trim().toLowerCase().equals("equip armor") && (choice[2].trim().toLowerCase().equals("body"))){
-					try {
-						//---armor is equipped
-						ea.equipArmorBody(player, choice[1].trim().toLowerCase());
-						System.out.println("Hero " + choice[2].trim().toLowerCase() + " equipped with " + player.getArmorName(choice[2].trim().toLowerCase()));
-					} catch (InvalidArmorException e) {
-						e.printStackTrace();
-					}
-				}else if (choice[0].trim().toLowerCase().equals("equip armor") && (choice[2].trim().toLowerCase().equals("legs"))){
-					try {
-						//---armor is equipped
-						ea.equipArmorLegs(player, choice[1].trim().toLowerCase());
-						System.out.println("Hero " + choice[2].trim().toLowerCase() + " equipped with " + player.getArmorName(choice[2].trim().toLowerCase()));
+						ea.equipArmor(player, choice[1].trim().toLowerCase(), choice[2].trim().toLowerCase());
+						if((choice[2].trim().toLowerCase()).equals("head")) {
+							System.out.println("Hero " + choice[2].trim().toLowerCase() + " equipped with " + player.getArmorHead().getName());
+						}else if ((choice[2].trim().toLowerCase()).equals("body")){
+							System.out.println("Hero " + choice[2].trim().toLowerCase() + " equipped with " + player.getArmorBody().getName());
+						}else if ((choice[2].trim().toLowerCase()).equals("legs")){
+							System.out.println("Hero " + choice[2].trim().toLowerCase() + " equipped with " + player.getArmorLegs().getName());
+						}
 					} catch (InvalidArmorException e) {
 						e.printStackTrace();
 					}
 
 					//---primary attributes are update by armor
-					player = usa.updateStatsWithArmor(player);
+					//player = usa.updateStatsWithArmor(player);
 
 					//---If correct slot name not typed, user is prompted
 				} else if (choice[0].trim().toLowerCase().equals("equip armor") && (!choice[2].trim().toLowerCase().equals("head") || !choice[2].trim().toLowerCase().equals("body") || !choice[2].trim().toLowerCase().equals("legs"))) {
@@ -140,7 +129,7 @@ public class RPGCharacters {
 
 				//---damage per second calculated if there are no weapons equipped
 				if (player.getWeapon() == null) {
-					player = dps.damagePerSecondNoWeapon(player);
+					//player = dps.damagePerSecondNoWeapon(player);
 					//---damage per second calculated if weapons are equipped
 				} else if (player.getWeapon() != null) {
 					player = usw.updateStatsWithWeapon(player);

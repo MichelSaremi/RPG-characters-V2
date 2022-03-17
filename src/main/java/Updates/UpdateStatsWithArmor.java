@@ -27,27 +27,27 @@ public class UpdateStatsWithArmor {
         int legs_int = 0;
 
         //---change initial atributes with armor attributes
-        if(player.getArmor("head")!=null) {
-            head_str = player.getArmor("head").getStrength();
-            head_dex = player.getArmor("head").getDexterity();
-            head_int = player.getArmor("head").getIntelligence();
+        if(player.getArmorHead()!=null) {
+            head_str = player.getArmorHead().getStrength();
+            head_dex = player.getArmorHead().getDexterity();
+            head_int = player.getArmorHead().getIntelligence();
         }
-        if(player.getArmor("body")!=null) {
-            body_str = player.getArmor("body").getStrength();
-            body_dex = player.getArmor("body").getDexterity();
-            body_int = player.getArmor("body").getIntelligence();
+        if(player.getArmorBody()!=null) {
+            body_str = player.getArmorBody().getStrength();
+            body_dex = player.getArmorBody().getDexterity();
+            body_int = player.getArmorBody().getIntelligence();
         }
-        if(player.getArmor("legs")!=null) {
-            legs_str = player.getArmor("legs").getStrength();
-            legs_dex = player.getArmor("legs").getDexterity();
-            legs_int = player.getArmor("legs").getIntelligence();
+        if(player.getArmorLegs()!=null) {
+            legs_str = player.getArmorLegs().getStrength();
+            legs_dex = player.getArmorLegs().getDexterity();
+            legs_int = player.getArmorLegs().getIntelligence();
         }
 
         //---add all attributes together and set in hero
         float new_str = base_str + head_str + body_str + legs_str;
         float new_dex = base_dex + head_dex + body_dex + legs_dex;
         float new_int = base_int + head_int + body_int + legs_int;
-        player.setTotalAtt(new_str, new_dex, new_int);
+        //player.setTotalAtt(new_str, new_dex, new_int);
 
         return player;
     }
