@@ -40,6 +40,7 @@ public class RPGCharacters {
 			//---Enter -> start,your_name,your_class
 			commandinput();
 
+
 			//---it user types exit then exit while loop
 			if (choice[0].trim().toLowerCase().equals("exit")) {
 				System.out.println("Thank you for playing, goodbye.");
@@ -88,27 +89,19 @@ public class RPGCharacters {
 				//---Equip armor
 				//---armor can only be equipped at "Head", "Body" or "Legs"
 				//---Enter equip armor,armor name,slot
-				if (choice[0].trim().toLowerCase().equals("equip armor")){
+
+				//---If input incorrect
+				if (choice[0].trim().toLowerCase().equals("equip armor") && (choice.length==2)) {
+					System.out.println("Please follow instructions in Readme for equipping armor!");
+
+				}else if (choice[0].trim().toLowerCase().equals("equip armor") && (choice.length==3)) {
 					try {
 						//---armor is equipped
 						ea.equipArmor(player, choice[1].trim().toLowerCase(), choice[2].trim().toLowerCase());
-						if((choice[2].trim().toLowerCase()).equals("head")) {
-							System.out.println("Hero " + choice[2].trim().toLowerCase() + " equipped with " + player.getArmorHead().getName());
-						}else if ((choice[2].trim().toLowerCase()).equals("body")){
-							System.out.println("Hero " + choice[2].trim().toLowerCase() + " equipped with " + player.getArmorBody().getName());
-						}else if ((choice[2].trim().toLowerCase()).equals("legs")){
-							System.out.println("Hero " + choice[2].trim().toLowerCase() + " equipped with " + player.getArmorLegs().getName());
-						}
 					} catch (InvalidArmorException e) {
 						e.printStackTrace();
 					}
-
-
-					//---If input incorrect
-				} else if (choice[0].trim().toLowerCase().equals("equip armor") && (choice[2]==null)) {
-					System.out.println("Please follow instructions in Readme for equipping armor!");
 				}
-
 
 				//---automatically display status at the end of each command
 				ds.statsDisplay(player);

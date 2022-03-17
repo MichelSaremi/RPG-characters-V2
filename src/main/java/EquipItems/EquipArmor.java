@@ -28,18 +28,22 @@ public class EquipArmor {
                     throw new InvalidArmorException("You dont have sufficient level to equip armor!");
 
                 //---otherwise equip armor at desired slot
-            }else if (slot.equals("head")) {
+                }else if (slot.equals("head")) {
                     player.setArmorHead(item);
+                    System.out.println("Hero head is equipped with " + player.getArmorHead().getName());
                     return true;
-            }else if (slot.equals("body")) {
+                }else if (slot.equals("body")) {
                     player.setArmorBody(item);
+                    System.out.println("Hero body is equipped with " + player.getArmorBody().getName());
                     return true;
-            }else if (slot.equals("legs")) {
+                }else if (slot.equals("legs")) {
                     player.setArmorLegs(item);
+                    System.out.println("Hero legs are equipped with " + player.getArmorLegs().getName());
                     return true;
 
                 }else if (!slot.equals("head") && !slot.equals("body") && !slot.equals("legs")){
                     System.out.println("You can only equip armor on Head, Body or Legs !");
+                    return false;
                 }
             }
         }
