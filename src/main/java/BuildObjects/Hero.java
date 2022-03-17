@@ -14,11 +14,6 @@ public class Hero {
 	private float base_Dexterity;
 	private float base_Intelligence;
 
-	
-	//---damage
-	private double damage_per_second;
-	
-	
 	//---equipment
 	enum slotType{
 		HEAD,
@@ -51,10 +46,7 @@ public class Hero {
 	public void setLevel(int level) {
 		this.level= level;
 	}
-	
-	public void setDPS(double DPS) {
-		this.damage_per_second=DPS;
-	}
+
 	
 	public void setWeapon(Weapon weapon) {
 		equipment.put(slotType.WEAPON, weapon);
@@ -90,9 +82,6 @@ public class Hero {
 		return base_Intelligence;
 	}
 
-	public double getDPS() {
-		return damage_per_second;
-	}
 	public Weapon getWeapon() {
 		return (Weapon) equipment.get(slotType.WEAPON);
 	}
@@ -188,6 +177,7 @@ public class Hero {
 	public double getDmgPerSecond(){
 		double CharDPS = 0;
 
+		//---when no weapon is equipped
 		if(equipment.get(slotType.WEAPON)==null) {
 			if (this.character.equals("warrior")) {
 				CharDPS = 1 * (1 + (this.getTotalstrengthWithArmor() / 100));
@@ -198,6 +188,7 @@ public class Hero {
 			} else if (this.character.equals("mage")) {
 				CharDPS = 1 * (1 + (this.getTotalIntWithArmor() / 100));
 			}
+			//---when weapon is equipped
 		}else if(equipment.get(slotType.WEAPON)!=null){
 
 			double weaponAttackPerSec = ((Weapon) equipment.get(slotType.WEAPON)).getAttacks_per_second();

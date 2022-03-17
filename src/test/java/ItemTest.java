@@ -3,9 +3,6 @@ import EquipItems.EquipArmor;
 import EquipItems.EquipWeapon;
 import InvalidExceptions.InvalidArmorException;
 import InvalidExceptions.InvalidWeaponException;
-import Updates.DmgPerSecondNoWeapons;
-import Updates.UpdateStatsWithArmor;
-import Updates.UpdateStatsWithWeapon;
 import org.junit.jupiter.api.Test;
 import org.testng.AssertJUnit;
 
@@ -111,7 +108,6 @@ public class ItemTest {
 		//---arrange
 		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
         EquipArmor ea = new EquipArmor();
-        UpdateStatsWithArmor usa = new UpdateStatsWithArmor();
 		String choice = "bronze plate"; //---adds str. 3, dex. 1, int. 1
 		String slot = "body";
 		ea.equipArmor(player, choice, slot);
@@ -119,10 +115,9 @@ public class ItemTest {
 		double expected_dex = 3;
 		double expected_int = 2;
 		//---act
-		player = usa.updateStatsWithArmor(player);
-		double actual_str = player.getTotal_Strength();
-		double actual_dex = player.getTotal_Dexterity();
-		double actual_int = player.getTotal_Intelligence();
+		double actual_str = player.getTotalstrengthWithArmor();
+		double actual_dex = player.getTotalDexWithArmor();
+		double actual_int = player.getTotalIntWithArmor();
 		//---assert
 		AssertJUnit.assertEquals(expected_str,actual_str);
 		AssertJUnit.assertEquals(expected_dex,actual_dex);
@@ -134,11 +129,9 @@ public class ItemTest {
 	public void damagePerSecond_NoWeapons_damagePerSecondNoWeaponsReturned() {
 		//---arrange
 		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
-		DmgPerSecondNoWeapons  dmgpsNoWeapons = new DmgPerSecondNoWeapons();
 		int expected = 1*(1 + (5 / 100));
 		//---act
-		player = dmgpsNoWeapons.damagePerSecondNoWeapon(player);
-		int actual = (int) player.getDPS();
+		int actual = (int) player.getDmgPerSecond();
 		//---assert
 		AssertJUnit.assertEquals(expected,actual);
 	}
@@ -149,13 +142,11 @@ public class ItemTest {
 		//---arrange
 		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
 		EquipWeapon ew = new EquipWeapon();
-		UpdateStatsWithWeapon usw = new UpdateStatsWithWeapon();
 		String choice = "wooden sword";
 		ew.equipWeapon(player, choice);
 		int expected = (int) ((2.5*1.5)*(1 + (5 / 100)));
 		//---act
-		player = usw.updateStatsWithWeapon(player);
-		int actual = (int) player.getDPS();
+		int actual = (int) player.getDmgPerSecond();
 		//---assert
 		AssertJUnit.assertEquals(expected,actual);
 	}
@@ -167,19 +158,15 @@ public class ItemTest {
 		Hero player = new Hero("Michel", "warrior", 5, 2, 1);
 		EquipArmor ea = new EquipArmor();
 		EquipWeapon ew = new EquipWeapon();
-		UpdateStatsWithArmor usa = new UpdateStatsWithArmor();
-		UpdateStatsWithWeapon usw = new UpdateStatsWithWeapon();
 		String choiceWeapon = "wooden sword"; //---damage:2.5, attacks_per_second:1.5
 		String choiceArmor = "bronze plate"; //---3 strength added
 
 		ea.equipArmor(player, choiceArmor, "body");
-		player = usa.updateStatsWithArmor(player);
 		ew.equipWeapon(player, choiceWeapon);
-		player = usw.updateStatsWithWeapon(player);
 
 		int expected = (int) ((2.5*1.5)*(1.0+((5.0+3.0)/100.0)));
 		//---act
-		int actual = (int) player.getDPS();
+		int actual = (int) player.getDmgPerSecond();
 		//---assert
 		AssertJUnit.assertEquals(expected,actual);
 	}

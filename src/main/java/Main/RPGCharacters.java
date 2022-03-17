@@ -1,9 +1,7 @@
 package Main;
 
-import BuildObjects.Armor;
 import BuildObjects.BuildHero;
 import BuildObjects.Hero;
-import BuildObjects.Weapon;
 import Displays.DisplayArmor;
 import Displays.DisplayStats;
 import Displays.DisplayWeapons;
@@ -11,12 +9,7 @@ import EquipItems.EquipArmor;
 import EquipItems.EquipWeapon;
 import InvalidExceptions.InvalidArmorException;
 import InvalidExceptions.InvalidWeaponException;
-import Updates.DmgPerSecondNoWeapons;
 import Updates.HeroLevelUp;
-import Updates.UpdateStatsWithArmor;
-import Updates.UpdateStatsWithWeapon;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RPGCharacters {
@@ -24,17 +17,12 @@ public class RPGCharacters {
 
 	String[] choice;
 	public Hero player;
-	public ArrayList<Weapon> weaponslist = new ArrayList<Weapon>();
-	public ArrayList<Armor> armorlist = new ArrayList<Armor>();
 	BuildHero bh = new BuildHero();
 	HeroLevelUp lu = new HeroLevelUp();
 	DisplayWeapons dw = new DisplayWeapons();
 	EquipWeapon ew = new EquipWeapon();
 	DisplayArmor da = new DisplayArmor();
 	EquipArmor ea = new EquipArmor();
-	UpdateStatsWithArmor usa = new UpdateStatsWithArmor();
-	DmgPerSecondNoWeapons dps = new DmgPerSecondNoWeapons();
-	UpdateStatsWithWeapon usw = new UpdateStatsWithWeapon();
 	DisplayStats ds = new DisplayStats();
 
 	public static void main(String[] args) {
@@ -74,7 +62,6 @@ public class RPGCharacters {
 				//---Enter -> level up
 				if (choice[0].trim().toLowerCase().equals("level up")) {
 					player = lu.levelUp(player);
-					//player = usa.updateStatsWithArmor(player);
 					System.out.println("Hero leveled up!");
 				}
 
@@ -119,21 +106,12 @@ public class RPGCharacters {
 						e.printStackTrace();
 					}
 
-					//---primary attributes are update by armor
-					//player = usa.updateStatsWithArmor(player);
 
 					//---If correct slot name not typed, user is prompted
 				} else if (choice[0].trim().toLowerCase().equals("equip armor") && (!choice[2].trim().toLowerCase().equals("head") || !choice[2].trim().toLowerCase().equals("body") || !choice[2].trim().toLowerCase().equals("legs"))) {
 					System.out.println("You can only equip armor on Head, Body or Legs !");
 				}
 
-				//---damage per second calculated if there are no weapons equipped
-				if (player.getWeapon() == null) {
-					//player = dps.damagePerSecondNoWeapon(player);
-					//---damage per second calculated if weapons are equipped
-				} else if (player.getWeapon() != null) {
-					//player = usw.updateStatsWithWeapon(player);
-				}
 
 				//---automatically display status at the end of each command
 				ds.statsDisplay(player);
